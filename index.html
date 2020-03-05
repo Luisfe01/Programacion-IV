@@ -1,18 +1,58 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bienvenido a Programacion IV</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <h1>APP ALUMNOS OFFLINE</h1>
-    <div id="container">
-      <h2>Alumnos Registrados</h2>
-      <ul id="tabla"></ul>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head> 
+<body>
+    <div class="container">
+        <form id="frmConversores" >
+            <div class="row row-cols-2 ">
+                <div class="col">
+                    CONVERSIONES
+                </div>
+            </div>
+            <div class="row row-cols-4">
+                <div class="col">
+                    DE: <select id="cboDe" class="form-control">
+                        <option value="dolar">Dolar</option>
+                        <option value="colones">Colones</option>
+                        <option value="yenes">Yenes</option>
+                        <option value="rupias">Rupias</option>
+                        <option value="lempiras">Lempiras</option>
+                        <option value="pesos">Pesos</option>
+                        <option value="bitcoin">Bitcoin</option>
+                    </select>
+                </div>
+                <div class="col">
+                    A: <select id="cboA" class="form-control">
+                      <option value="dolar">Dolar</option>
+                      <option value="colones">Colones</option>
+                      <option value="yenes">Yenes</option>
+                      <option value="rupias">Rupias</option>
+                      <option value="lempiras">Lempiras</option>
+                      <option value="pesos">Pesos</option>
+                      <option value="bitcoin">Bitcoin</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row row-cols-4 ">
+                <div class="col text-center">
+                    <input type="text" required="required" pattern="[0-9.]{1,}" placeholder="cantidad" id="txtCantidad" class="form-control">
+                </div>
+                <div class="col text-center">
+                    <p class="" id="resultado">Resultado</p>
+                </div>
+            </div>
+            <div class="row row-cols-2">
+                <div class="col text-center"><input type="submit" id="btn" class="btn btn-primary"></div>
+            </div>
+        </form>
     </div>
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
