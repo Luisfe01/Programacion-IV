@@ -1,44 +1,54 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bienvenido a Programacion IV</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <h1>APP ALUMNOS OFFLINE</h1>
-    <div id="container">
-      <form name="frmAlumnos" id="frmAlumnos" method="get">
-        <div>
-          <label for="codigo">Codigo</label>
-          <input id="codigo" type="text" required="required" placeholder="codigo" pattern="^[A-Z]{4}[0-9]{6}"/>
-        </div>
-        <div>
-          <label for="nombre">Nombre</label>
-          <input id="nombre" type="text" required="required" 
-          placeholder="Nombre" pattern="[a-zA-ZñÑ ]{3,65}" />
-        </div>
-        <div>
-            <label for="direccion">Direccion</label>
-            <input id="direccion" type="text" required="required" placeholder="Direccion"/>
-          </div>
-          <div>
-            <label for="telefono">Telefono</label>
-            <input id="telefono" type="text" required="required" 
-            placeholder="Telefono" pattern="[0-9]{4}-[0-9]{4}" />
-          </div>
-        <div>
-          <button id="guardar" type="submit">Guardar</button>
-        </div>
-      </>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head> 
+<body>
+    <div class="container">
+        <form id="frmConversores" >
+            <div class="row row-cols-2 p-2">
+                <div class="col text-center bg-info text-white">
+                    APP CONVERSORES
+                </div>
+            </div>
+            <div class="row row-cols-4 p-2">
+                <div class="col">
+                    DE: <select id="cboDe" class="form-control">
+                        <option value="dolar">Dolar</option>
+                        <option value="euro">Euros</option>
+                        <option value="quetzal">Quetzales</option>
+                        <option value="lempira">Lempira</option>
+                        <option value="cordoba">Cordoba</option>
+                    </select>
+                </div>
+                <div class="col">
+                    A: <select id="cboA" class="form-control">
+                        <option value="dolar">Dolar</option>
+                        <option value="euro">Euros</option>
+                        <option value="quetzal">Quetzales</option>
+                        <option value="lempira">Lempira</option>
+                        <option value="cordoba">Cordoba</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row row-cols-4 p-2">
+                <div class="col text-center">
+                    <input type="text" required="required" pattern="[0-9.]{1,}" placeholder="cantidad" id="txtCantidadConversores" class="form-control">
+                </div>
+                <div class="col text-center">
+                    <p class="bg-success text-white" id="lblRespuesta">Respuesta: ?</p>
+                </div>
+            </div>
+            <div class="row row-cols-2">
+                <div class="col text-center"><input type="submit" id="btnConvertirMoneda" class="btn btn-primary"></div>
+            </div>
+        </form>
     </div>
-    <hr />
-    <div id="container">
-      <h2>Alumnos Registrados</h2>
-      <ul id="tabla"></ul>
-    </div>
-    <script src="script.js"></script>
-  </body>
+    <script src="app.js"></script>
+</body>
 </html>
