@@ -12,7 +12,7 @@
                 <thead>
                     <tr>
                         <th colspan="5">
-                            <input type="text" id="txtBuscarDocente" placeholder="codigo, nombre o dui" class="form-control">
+                            <input type="text" v-model="valor" v-on:keyup="buscarDocente" placeholder="codigo, nombre o dui" class="form-control">
                         </th>
                     </tr>
                     <tr>
@@ -21,13 +21,25 @@
                         <th>DIRECCION</th>
                         <th>TELEFONO</th> 
                         <th>DUI</th> 
+
                         <th> </th>
                     </tr>
                 </thead>
                 <tbody>
+                    <tr v-for="profesor in misdocentes" :key="profesor.idDocente" v-on:click="modificarDocente(profesor)">
+                        <td>{{ profesor.codigo }}</td>
+                        <td>{{ profesor.nombre }}</td>
+                        <td>{{ profesor.direccion }}</td>
+                        <td>{{ profesor.telefono }}</td>
+                        <td>{{ profesor.dui }}</td>
 
+                        <td>
+                            <input v-on:click="eliminarDocente(profesor.idDocente)" type="button" class="btn btn-outline-danger text-white" value="del">
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </form>
+<script src="public/vistas/docentes/buscar-docentes.js"></script> 
