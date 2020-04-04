@@ -22,13 +22,19 @@ class materia{
     }
     private function validar_datos(){
         if( empty($this->datos['codigo']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el codigo del estudiante';
+            $this->respuesta['msg'] = 'por favor ingrese el codigo del la materia';
         }
         if( empty($this->datos['nombre']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el nombre del estudiante';
+            $this->respuesta['msg'] = 'por favor ingrese el nombre de la materia';
         }
         if( empty($this->datos['numorden']) ){
-            $this->respuesta['msg'] = 'por favor ingrese la direccion del estudiante';
+            $this->respuesta['msg'] = 'por favor ingrese el numero de orden';
+        }
+        if( empty($this->datos['prerrequisito']) ){
+            $this->respuesta['msg'] = 'por favor ingrese el prerrequisito';
+        }
+        if( empty($this->datos['ciclo']) ){
+            $this->respuesta['msg'] = 'por favor ingrese el ciclo de la materia';
         }
         $this->almacenar_materia();
     }

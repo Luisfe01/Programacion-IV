@@ -30,6 +30,10 @@ class alumno{
         if( empty($this->datos['direccion']) ){
             $this->respuesta['msg'] = 'por favor ingrese la direccion del estudiante';
         }
+        if( empty($this->datos['telefono']) ){
+            $this->respuesta['msg'] = 'por favor ingrese el telefono del estudiante';
+        }
+        
         $this->almacenar_alumno();
     }
     private function almacenar_alumno(){

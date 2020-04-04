@@ -25,10 +25,16 @@ class docente{
             $this->respuesta['msg'] = 'por favor ingrese el codigo del estudiante';
         }
         if( empty($this->datos['nombre']) ){
-            $this->respuesta['msg'] = 'por favor ingrese el nombre del estudiante';
+            $this->respuesta['msg'] = 'por favor ingrese el nombre del docente';
         }
         if( empty($this->datos['direccion']) ){
-            $this->respuesta['msg'] = 'por favor ingrese la direccion del estudiante';
+            $this->respuesta['msg'] = 'por favor ingrese la direccion del docente';
+        }
+        if( empty($this->datos['telefono']) ){
+            $this->respuesta['msg'] = 'por favor ingrese el telefono del docente';
+        }
+        if( empty($this->datos['dui']) ){
+            $this->respuesta['msg'] = 'por favor ingrese el dui del docente';
         }
         $this->almacenar_docente();
     }
