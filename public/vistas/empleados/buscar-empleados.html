@@ -1,0 +1,46 @@
+<form method="post" id="frm-buscar-empleados">
+    <div class="card text-white bg-info mb-3"  style="max-width: 55rem;">
+        <div class="card-header">
+            BUSQUEDA DE EMPLEADOS
+            <button type="button" id="btn-close-buscar-empleados" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="card-body">
+            <table id="tbl-buscar-empleados" class="table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th colspan="3">
+                            <input type="text" v-model="valor" v-on:keyup="buscarEmpleados" placeholder="nombre, apellido o telefono" class="form-control">
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>NOMBRE</th>
+                        <th>APELLIDO</th> 
+                        <th>DIRECCION</th> 
+                        <th>TELEFONO</th>           
+                        <th>DUI</th> 
+                        <th>FECHANACIMIENTO</th> 
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="mi_empleado in mis_empleados" :key="mi_empleado.idEmpleado" v-on:click="modificarEmpleado(mi_empleado)" >
+                        <td>{{ mi_empleado.tipo }}</td>
+                        <td>{{ mi_empleado.nombre }}</td>
+                        <td>{{ mi_empleado.apellido }}</td>
+                        <td>{{ mi_empleado.direccion }}</td>
+                        <td>{{ mi_empleado.telefono }}</td>
+                        <td>{{ mi_empleado.dui }}</td>
+                        <td>{{ mi_empleado.fechanacimiento }}</td>
+
+                        <td>
+                            <input v-on:click="eliminarEmpleado(mi_empleado.idEmpleado)" type="button" class="btn btn-outline-danger text-white" value="del">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+<script src="public/vistas/empleados/buscar-empleados.js"></script>

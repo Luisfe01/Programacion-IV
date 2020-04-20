@@ -1,0 +1,45 @@
+<form method="post" id="frm-servicios" v-on:submit.prevent="guardarServicios" v-on:reset.prevent="limpiarServicios">
+    <div class="card text-white bg-info mb-3" style="max-width: 25rem;">
+        <div class="card-header">
+            MANTENIMIENTO DE SERVICIOS
+            <button type="button" id="btn-close-servicios" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="row row-cols-2 p-2">
+                <div class="row-col">
+                    <div class="col">
+                        NOMBRE:
+                    </div>
+                    <div class="col">
+                        <input type="text" required v-model="servicio.nombre" placeholder="AAA AAAA" class="form-control">
+                    </div>
+                </div>
+                <div class="row-col">
+                    <div class="col">
+                        PRECIO:
+                    </div>
+                    <div class="col">
+                        <input type="text" required v-model="servicio.precio" placeholder="$" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-1 p-2">
+                <div class="row-col text-center">
+                    <div class="col">
+                        <input id="btnGuardarServicios" type="submit" class="btn btn-success text-white" value="Guardar">
+                        <input type="reset" class="btn btn-danger text-white" value="Limpiar">
+                        <input type="button" class="btn btn-primary mostrar-buscar-servicios text-white" data-modulo="servicios" data-form="buscar-servicios" value="Buscar" data-modulo="buscar-servicios" >
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-1 p-2">
+                <div class="row-col text-center">
+                    <div class="alert alert-success" role="alert">{{ servicio.msg }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="public/vistas/servicios/servicios.js"></script>

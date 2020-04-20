@@ -1,0 +1,55 @@
+<form method="post" id="frm-habitaciones" v-on:submit.prevent="guardarHabitaciones" v-on:reset.prevent="limpiarHabitaciones">
+    <div class="card text-white bg-info mb-3" style="max-width: 25rem;">
+        <div class="card-header">
+            MANTENIMIENTO DE HABITACIONES
+            <button type="button" id="btn-close-habitaciones" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="row row-cols-2 p-2">
+                <div class="row-col">
+                    <div class="col">
+                        NUM. HABITACION
+                    </div>
+                    <div class="col">
+                        <input type="text" required v-model="habitacion.numhabitacion" placeholder="AAA AAAA" class="form-control">
+                    </div>
+                </div>
+                <div class="row-col">
+                    <div class="col">
+                        NUM. CAMAS
+                    </div>
+                    <div class="col">
+                        <input type="text" required v-model="habitacion.numcamas" placeholder="AAA AAAA" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-1 p-2">
+                <div class="row-col">
+                    <div class="col">
+                        DISPONIBILIDAD
+                    </div>
+                    <div class="col">
+                        <input type="text" required v-model="habitacion.disponibilidad" placeholder="DISPONIBLE U OCUPADA" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-1 p-2">
+                <div class="row-col text-center">
+                    <div class="col">
+                        <input id="btnGuardarHabitaciones" type="submit" class="btn btn-success text-white" value="Guardar">
+                        <input type="reset" class="btn btn-danger text-white" value="Limpiar">
+                        <input type="button" class="btn btn-primary mostrar-buscar-habitaciones text-white" data-modulo="habitaciones" data-form="buscar-habitaciones" value="Buscar" data-modulo="buscar-habitaciones" >
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-1 p-2">
+                <div class="row-col text-center">
+                    <div class="alert alert-success" role="alert">{{ habitacion.msg }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="public/vistas/habitaciones/habitaciones.js"></script>

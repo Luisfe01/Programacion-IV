@@ -1,0 +1,38 @@
+<form method="post" id="frm-buscar-servicios">
+        <div class="card text-white bg-info mb-3" style="max-width: 48rem;">
+
+        <div class="card-header">
+            BUSQUEDA DE CLIENTES
+
+            <button type="button" id="btn-close-buscar-servicios" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="card-body">
+            <table id="tbl-buscar-servicios" class="table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th colspan="5">
+                            <input type="text" v-model="valor" v-on:keyup="buscarServicios" placeholder="nomre o precio del servicio" class="form-control">
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>NOMBRE</th>
+                        <th>PRECIO</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="mi_servicio in mis_servicios" :key="mi_servicio.idServicio" v-on:click="modificarServicio(mi_servicio)" >
+                        <td>{{ mi_servicio.nombre }}</td>
+                        <td>{{ mi_servicio.precio }}</td>
+                        <td>
+                            <input v-on:click="eliminarServicio(mi_servicio.idServicio)" type="button" class="btn btn-outline-danger text-white" value="del">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+<script src="public/vistas/servicios/buscar-servicios.js"></script>
