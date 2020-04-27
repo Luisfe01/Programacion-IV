@@ -1,14 +1,19 @@
+Vue.component('v-select', VueSelect.VueSelect);
+
 var apphabitaciones = new Vue({
     el:'#frm-habitaciones',
     data:{
         habitacion:{
             idHabitacion : 0,
             accion    : 'nuevo',
-            numhabitacion   : '',
-            numcamas    : '',
-            disponibilidad : '',
+            tipohabitacion   : {
+                idTipohabitaciones : 0,
+                tipo   : ''
+            },
+            
             msg       : ''
-        }
+        },
+        tipohabitaciones : {}
     },
     methods:{
         guardarHabitaciones(){
@@ -19,10 +24,12 @@ var apphabitaciones = new Vue({
         limpiarHabitaciones(){
             this.habitacion.idHabitacion=0;
             this.habitacion.accion="nuevo";
-            this.habitacion.numhabitacion="";
-            this.habitacion.numcamas="";
-            this.habitacion.disponibilidad="";
-
+            this.habitacion.msg="";
         }
+    },
+    created(){
+        fetch(`private/Modulos/habitaciones/procesos.php?proceso=traer_tipohabitaciones&habitacion=''`).then( resp=>resp.json() ).then(resp=>{
+            this.tipohabitaciones = resp.tipohabitaciones;
+        });
     }
 });

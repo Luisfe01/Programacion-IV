@@ -48,43 +48,34 @@ class empleado{
     }
     private function almacenar_empleado(){
         if( $this->respuesta['msg']==='correcto' ){
-            if( $this->datos['accion']==='nuevo' ){
-                $this->db->consultas('
-                    INSERT INTO empleados (idTipoempleado,nombre,apellido,direccion,telefono,dui,fechanacimiento	) VALUES(
-                        "'. $this->datos['tipoempleado']['id'] .'",
-                        "'. $this->datos['nombre'].'",
-                        "'. $this->datos['apellido'] .'",
-                        "'. $this->datos['direccion'].'",
-                        "'. $this->datos['telefono'] .'",
-                        "'. $this->datos['dui'] .'",
-                        "'. $this->datos['fechanacimiento'] .'"
-                    )
-                ');
-                $this->respuesta['msg'] = 'Registro insertado correctamente';
-            } else if( $this->datos['accion']==='modificar' ){
-                $this->db->consultas('
-                    UPDATE empleados SET
-                        idTipoempleado     = "'. $this->datos['tipoempleado']['id'] .'",
-                        nombre             = "'. $this->datos['nombre'].'",
-                        apellido           = "'. $this->datos['apellido'].'",
-                        direccion          = "'. $this->datos['direccion'].'",
-                        telefono           = "'. $this->datos['telefono'].'",
-                        dui                = "'. $this->datos['dui'].'",
-                        fechanaciminto     = "'. $this->datos['fechanacimiento'] .'"
-                    WHERE idEmpleado = "'. $this->datos['idEmpleado'] .'"
-                ');
-                $this->respuesta['msg'] = 'Registro actualizado correctamente';
-            }
+            if( $this->datos['accion']==='nuevo' )
         }
     }
     public function buscarEmpleado($valor = ''){
         $this->db->consultas('
-            select empleados.idEmpleado, tipoempleados.tipo, empleados.nombre, empleados.apellido, empleados.direccion, empleados.telefono, empleados.dui, empleados.fechanacimiento
+            select empleados.idEmpleado, tipoempleados.idTipoempleado, tipoempleados.tipo, empleados.nombre, empleados.apellido, empleados.direccion, empleados.telefono, empleados.dui, empleados.fechanacimiento
             from empleados INNER JOIN tipoempleados on empleados.idTipoempleado=tipoempleados.idTipoempleado
             where empleados.nombre like "%'. $valor .'%" or empleados.apellido like "%'. $valor .'%" or empleados.telefono like "%'. $valor .'%"
 
         ');
-        return $this->respuesta = $this->db->obtener_data();
+        $empleados = $this->respuesta = $this->db->obtener_data();
+        foreach ($empleados as $key => $value) {
+            $datos[] = [
+                'idEmpleado' => $value['idEmpleado'],
+                'nombre' => $value['nombre'],
+                'apellido' => $value['apellido'],
+                'tipoempleado'      => [
+                    'id'      => $value['idTipoempleado'],
+                    'label'   => $value['tipo']
+                ],
+                'direccion'        =>  $value['direccion'],
+                'telefono'        =>  $value['telefono'],
+                'dui'               =>  $value['dui'],
+                'fechanacimiento'   => $value['fechanacimiento']
+                
+            ]; 
+        }
+        return $this->respuesta = $datos;
     }
     public function traer_tipoempleados(){
         $this->db->consultas('

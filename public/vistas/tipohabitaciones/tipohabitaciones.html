@@ -1,0 +1,38 @@
+<form method="post" id="frm-tipohabitaciones" v-on:submit.prevent="guardarTipohabitaciones" v-on:reset.prevent="limpiarTipohabitaciones">
+    <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
+        <div class="card-header">
+            MANTENIMIENTO DE CATEGORIAS DE HABITACION
+            <button type="button" id="btn-close-tipohabitaciones" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="row row-cols-1 p-2">
+                <div class="row-col">
+                    <div class="col">
+                        NOMBRE DE NUEVA CATEGORIA
+                    </div>
+                    <div class="col">
+                        <input type="text" required v-model="tipohabitacion.categoria" placeholder="AAAA" class="form-control">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row row-cols-1 p-2">
+                <div class="row-col text-center">
+                    <div class="col">
+                        <input id="btnGuardarTipohabitaciones" type="submit" class="btn btn-success text-white" value="Guardar">
+                        <input type="reset" class="btn btn-danger text-white" value="Limpiar">
+                        <input type="button" class="btn btn-primary mostrar-buscar-tipohabitaciones text-white" data-modulo="tipohabitaciones" data-form="buscar-tipohabitaciones" value="Buscar" data-modulo="buscar-tipohabitaciones" >
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-1 p-2">
+                <div class="row-col text-center">
+                    <div class="alert alert-success" role="alert">{{ tipohabitacion.msg }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="public/vistas/tipohabitaciones/tipohabitaciones.js"></script>

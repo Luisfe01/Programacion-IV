@@ -1,0 +1,36 @@
+<form method="post" id="frm-buscar-tipohabitaciones">
+        <div class="card text-white bg-info mb-3" style="max-width: 48rem;">
+
+        <div class="card-header">
+            BUSQUEDA DE CATEGORIAS
+
+            <button type="button" id="btn-close-buscar-tipohabitaciones" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="card-body">
+            <table id="tbl-buscar-tipohabitaciones" class="table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th colspan="5">
+                            <input type="text" v-model="valor" v-on:keyup="buscarTipohabitaciones" placeholder="Buscar por categoria" class="form-control">
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>CATEGORIA</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="mi_tipohabitacion in mis_tipohabitaciones" :key="mi_tipohabitacion.idTipohabitacion" v-on:click="modificarTipohabitacion(mi_tipohabitacion)" >
+                        <td>{{ mi_tipohabitacion.categoria }}</td>
+                        <td>
+                            <input v-on:click="eliminarTipohabitacion(mi_tipohabitacion.idTipohabitacion)" type="button" class="btn btn-outline-danger text-white" value="del">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+<script src="public/vistas/tipohabitaciones/buscar-tipohabitaciones.js"></script>

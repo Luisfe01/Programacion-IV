@@ -10,11 +10,13 @@
             <table id="tbl-buscar-empleados" class="table-striped table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th colspan="3">
+                        <th colspan="7">
                             <input type="text" v-model="valor" v-on:keyup="buscarEmpleados" placeholder="nombre, apellido o telefono" class="form-control">
                         </th>
                     </tr>
                     <tr>
+
+                        <th>PUESTO</th>
                         <th>NOMBRE</th>
                         <th>APELLIDO</th> 
                         <th>DIRECCION</th> 
@@ -26,7 +28,7 @@
                 </thead>
                 <tbody>
                     <tr v-for="mi_empleado in mis_empleados" :key="mi_empleado.idEmpleado" v-on:click="modificarEmpleado(mi_empleado)" >
-                        <td>{{ mi_empleado.tipo }}</td>
+                        <td>{{ mi_empleado.tipoempleado.label }}</td>
                         <td>{{ mi_empleado.nombre }}</td>
                         <td>{{ mi_empleado.apellido }}</td>
                         <td>{{ mi_empleado.direccion }}</td>
