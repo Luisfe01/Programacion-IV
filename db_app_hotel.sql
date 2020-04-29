@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-04-2020 a las 07:35:49
+-- Tiempo de generación: 27-04-2020 a las 07:34:36
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.2
 
@@ -54,6 +54,13 @@ CREATE TABLE `empleados` (
   `fechanacimiento` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `empleados`
+--
+
+INSERT INTO `empleados` (`idEmpleado`, `idTipoempleado`, `nombre`, `apellido`, `direccion`, `telefono`, `dui`, `fechanacimiento`) VALUES
+(8, 3, 'Juan', 'Gomez', 'San Miguel', '2345-2345', '02345678-1', '2020-04-22');
+
 -- --------------------------------------------------------
 
 --
@@ -62,10 +69,39 @@ CREATE TABLE `empleados` (
 
 CREATE TABLE `habitaciones` (
   `idHabitacion` int(10) NOT NULL,
+  `idPiso` int(10) NOT NULL,
+  `idTipohabitacion` int(10) NOT NULL,
   `numhabitacion` int(10) NOT NULL,
   `numcamas` int(10) NOT NULL,
-  `disponibilidad` char(10) NOT NULL
+  `disponibilidad` char(10) NOT NULL,
+  `precio` int(10) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `habitaciones`
+--
+
+INSERT INTO `habitaciones` (`idHabitacion`, `idPiso`, `idTipohabitacion`, `numhabitacion`, `numcamas`, `disponibilidad`, `precio`) VALUES
+(8, 0, 1, 1, 2, 'Disponible', 12);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pisos`
+--
+
+CREATE TABLE `pisos` (
+  `idPiso` int(10) NOT NULL,
+  `piso` int(10) NOT NULL,
+  `nombre` char(25) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `pisos`
+--
+
+INSERT INTO `pisos` (`idPiso`, `piso`, `nombre`) VALUES
+(4, 2, 'SEGUNDO PISO');
 
 -- --------------------------------------------------------
 
@@ -103,6 +139,25 @@ INSERT INTO `tipoempleados` (`idTipoempleado`, `tipo`) VALUES
 (7, 'Personal de Seguridad'),
 (8, 'Personal de spa');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipohabitaciones`
+--
+
+CREATE TABLE `tipohabitaciones` (
+  `idTipohabitacion` int(10) NOT NULL,
+  `categoria` char(25) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tipohabitaciones`
+--
+
+INSERT INTO `tipohabitaciones` (`idTipohabitacion`, `categoria`) VALUES
+(1, 'Triple'),
+(2, 'Matrimonial');
+
 --
 -- Índices para tablas volcadas
 --
@@ -124,7 +179,15 @@ ALTER TABLE `empleados`
 -- Indices de la tabla `habitaciones`
 --
 ALTER TABLE `habitaciones`
-  ADD PRIMARY KEY (`idHabitacion`);
+  ADD PRIMARY KEY (`idHabitacion`),
+  ADD KEY `idPiso` (`idPiso`),
+  ADD KEY `idTipohabitacion` (`idTipohabitacion`);
+
+--
+-- Indices de la tabla `pisos`
+--
+ALTER TABLE `pisos`
+  ADD PRIMARY KEY (`idPiso`);
 
 --
 -- Indices de la tabla `servicios`
@@ -139,6 +202,12 @@ ALTER TABLE `tipoempleados`
   ADD PRIMARY KEY (`idTipoempleado`);
 
 --
+-- Indices de la tabla `tipohabitaciones`
+--
+ALTER TABLE `tipohabitaciones`
+  ADD PRIMARY KEY (`idTipohabitacion`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -146,31 +215,43 @@ ALTER TABLE `tipoempleados`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `idCliente` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idCliente` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `empleados`
 --
 ALTER TABLE `empleados`
-  MODIFY `idEmpleado` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idEmpleado` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `habitaciones`
 --
 ALTER TABLE `habitaciones`
-  MODIFY `idHabitacion` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idHabitacion` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de la tabla `pisos`
+--
+ALTER TABLE `pisos`
+  MODIFY `idPiso` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `servicios`
 --
 ALTER TABLE `servicios`
-  MODIFY `idServicio` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idServicio` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tipoempleados`
 --
 ALTER TABLE `tipoempleados`
   MODIFY `idTipoempleado` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de la tabla `tipohabitaciones`
+--
+ALTER TABLE `tipohabitaciones`
+  MODIFY `idTipohabitacion` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
