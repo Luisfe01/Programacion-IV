@@ -48,7 +48,33 @@ class empleado{
     }
     private function almacenar_empleado(){
         if( $this->respuesta['msg']==='correcto' ){
-            if( $this->datos['accion']==='nuevo' )
+            if( $this->datos['accion']==='nuevo' ){
+                $this->db->consultas('
+                    INSERT INTO empleados (idTipoempleado,nombre,apellido,direccion,telefono,dui,fechanacimiento) VALUES(
+                        "'. $this->datos['tipoempleado']['id'] .'",
+                        "'. $this->datos['nombre'].'",
+                        "'. $this->datos['apellido'] .'",
+                        "'. $this->datos['direccion'].'",
+                        "'. $this->datos['telefono'] .'",
+                        "'. $this->datos['dui'].'",
+                        "'. $this->datos['fechanacimiento'] .'"
+                    )
+                ');
+                $this->respuesta['msg'] = 'Registro insertado correctamente';
+            } else if( $this->datos['accion']==='modificar' ){
+                $this->db->consultas('
+                    UPDATE empleados SET
+                        idTipoempleado     = "'. $this->datos['tipoempleado']['id'] .'",
+                        nombre            = "'. $this->datos['nombre'].'",
+                        apellido          = "'. $this->datos['apellido'].'",
+                        direccion         = "'. $this->datos['direccion'].'",
+                        telefono          = "'. $this->datos['telefono'].'",
+                        dui         = "'. $this->datos['dui'].'",
+                        fechanacimiento          = "'. $this->datos['fechanacimiento'].'"
+                    WHERE idEmpleado = "'. $this->datos['idEmpleado'] .'"
+                ');
+                $this->respuesta['msg'] = 'Registro actualizado correctamente';
+            }
         }
     }
     public function buscarEmpleado($valor = ''){
