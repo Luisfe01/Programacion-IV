@@ -1,0 +1,76 @@
+<form method="post" id="frm-peliculas" v-on:submit.prevent="guardarPeliculas" v-on:reset.prevent="limpiarPeliculas">
+    <div class="card text-dark bg-light mb-3" style="max-width: 30rem;">
+        <div class="card-header text-white bg-secondary mb-3" >
+            <button type="button" id="btn-close-peliculas" class="close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h5>MANTENIMIENTO DE PELICULAS</h5>
+        </div>
+        <div class="card-body">
+            <div class="row row-cols-2 p-2">
+                <div class="row-col">
+                    <div class="col">
+                        <p class="text-left"><strong>TITULO</strong></p>
+                    </div>
+                    <div class="col">
+                        <input type="text" required v-model="pelicula.titulo" placeholder="AAAAAAAAA" class="form-control">
+                    </div>
+                </div>
+                <div class="row-col">
+                    <div class="col">
+                        <p class="text-left"><strong>DESCRIPCION</strong></p>
+                    </div>
+                    <div class="col">
+                        <input type="text" required v-model="pelicula.descripcion" placeholder="AAAAAAAAA..." class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-1 p-2">
+                <div class="row-col">
+                    <div class="col">
+                        <p class="text-left"><strong>SINOPSIS</strong></p>
+                    </div>
+                    <div class="col">
+                        <textarea  type="text" required v-model="pelicula.sinopsis" placeholder="AAAAAAAAAAA..." class="form-control"rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-2 p-2">
+
+                <div class="row-col">
+                    <div class="col">
+                        <p class="text-left"><strong>GENERO</strong></p>
+                    </div>
+                    <div class="col">
+                        <input type="text" required v-model="pelicula.genero" placeholder="AAAAAA..." class="form-control">
+                    </div>
+                </div>
+                <div class="row-col">
+                    <div class="col">
+                        <p class="text-left"><strong>DURACION</strong></p>
+                    </div>
+                    <div class="col">
+                        <input type="text" required v-model="pelicula.duracion" placeholder="00:00:00" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-1 p-2">
+                <div class="row-col text-center">
+                    <div class="col">
+                        <input id="btnGuardarPeliculas" type="submit" class="btn btn-success text-white" value="Guardar">
+                        <input type="reset" class="btn btn-danger text-white" value="Limpiar">
+                        <input type="button" class="btn btn-primary mostrar-buscar-peliculas text-white" data-modulo="peliculas" data-form="buscar-peliculas" value="Buscar" data-modulo="buscar-peliculas" >
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-1 p-2">
+                <div class="row-col text-center">
+                    <div class="alert alert-success" role="alert">{{ pelicula.msg }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="public/vistas/peliculas/peliculas.js"></script>
+
+
