@@ -1,0 +1,34 @@
+<form method="post" id="frm-buscar-tipoempleados">
+        <div class="card">
+
+        <h3 class="card-header">
+            Busqueda de categorias <i class="fas fa-fw fa-search"></i>
+
+            <button type="button" id="btn-close-buscar-tipoempleados" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </h3>
+        <div class="card-body">
+            <table id="tbl-buscar-tipoempleados" class="table table-striped">
+                <thead>
+                    <tr>
+                            <input type="text" v-model="valor" v-on:keyup="buscarTipoempleados" placeholder="Buscar por categoria" class="form-control">
+                    </tr>
+                    <tr>
+                        <th>CATEGORIA</th>
+                        <th>ACCIONES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="mi_tipoempleado in mis_tipoempleados" :key="mi_tipoempleado.idTipoempleado" v-on:click="modificarTipoempleado(mi_tipoempleado)" >
+                        <td>{{ mi_tipoempleado.tipo }}</td>
+                        <td>
+                            <input v-on:click="eliminarTipoempleado(mi_tipoempleado.idTipoempleado)" type="button" class="btn btn-danger text-white" value="ELIMINAR">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+<script src="public/vistas/tipoempleados/buscar-tipoempleados.js"></script>

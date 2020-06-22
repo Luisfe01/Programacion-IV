@@ -1,0 +1,34 @@
+<form method="post" id="frm-buscar-pisos">
+        <div class="card ">
+        <h3 class="card-header">
+            Busqueda de pisos <i class="fas fa-fw fa-search"></i>
+            <button type="button" id="btn-close-buscar-pisos" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </h3>
+        <div class="card-body">
+            <table id="tbl-buscar-pisos" class="table table-striped">
+                <thead>
+                    <tr>
+                            <input type="text" v-model="valor" v-on:keyup="buscarPisos" placeholder="Numero o nombre " class="form-control">
+                    </tr>
+                    <tr>
+                        <th>NUMERO</th>
+                        <th>NOMBRE DEL PISO</th>
+                        <th>ACCIONES </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="mi_piso in mis_pisos" :key="mi_piso.idPiso" v-on:click="modificarPiso(mi_piso)" >
+                        <td>{{ mi_piso.numpiso }}</td>
+                        <td>{{ mi_piso.nombre }}</td>
+                        <td>
+                            <input v-on:click="eliminarPiso(mi_piso.idPiso)" type="button" class="btn btn-danger text-white" value="ELIMINAR">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+<script src="public/vistas/pisos/buscar-pisos.js"></script>

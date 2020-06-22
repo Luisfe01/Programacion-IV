@@ -1,0 +1,42 @@
+<form method="post" id="frm-buscar-reservas">
+    <div class="card">
+        <h3 class="card-header">
+            Busqueda de Reservas <i class="fas fa-fw fa-search"></i>
+            <button type="button" id="btn-close-buscar-reservas" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </h3>
+        <div class="card-body">
+            <input type="text" v-model="valor" v-on:keyup="buscarReservas" placeholder="Nombre, apellido o dui" class="form-control">
+            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+
+            <table id="tbl-buscar-reservas" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>CLIENTE</th>
+                        <th>HABITACION</th>
+                        <th>FECHA DE ENTRADA</th>
+                        <th>FECHA DE SALIDA</th> 
+                        <th>ACCIONES</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr v-for="mi_reserva in mis_reservas" :key="mi_reserva.idReserva" v-on:click="modificarReserva(mi_reserva)" >
+                        <td>{{ mi_reserva.cliente.label }}</td>
+                        <td>{{ mi_reserva.habitacion.label}}</td>
+                        <td>{{ mi_reserva.fechainicio }}</td>
+                        <td>{{ mi_reserva.fechafinal }}</td>
+
+
+                        <td>
+                            <input v-on:click="eliminarReserva(mi_reserva.idReserva)" type="button" class="btn btn-danger text-white" value="ELIMINAR">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="public/vistas/reservas/buscar-reservas.js"></script>

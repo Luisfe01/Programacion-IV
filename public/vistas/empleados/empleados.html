@@ -1,0 +1,64 @@
+<form v-on:submit.prevent="guardarEmpleados" v-on:reset="limpiarEmpleados" id="frm-empleados">
+    <div class="card">
+        <h3 class="card-header">
+            Mantenimiento de Empleados <i class="fas fa-fw fa-cog"></i>
+            <button type="button" id="btn-close-empleados" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </h3>
+        <div class="card-body">
+            <div class="row row-cols-2 p-2">
+                <div class="row-col">
+                    <div class="col">
+                        <label for="idnombreempleado">Nombre</label>
+                        <input id="idnombreempleado" type="text" required v-model="empleado.nombre" placeholder="AAA AAAA" class="form-control">
+                    </div>
+                </div>
+                <div class="row-col">
+                    <div class="col">
+                        <label for="idapellidoempleado">Apellido</label>
+                        <input id="idapellidoempleado" type="text" required v-model="empleado.apellido" placeholder="AAA AAAA" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-1 p-2">
+                    <div class="col">
+                        <label for="iddireccionempleado">Direccion</label>
+                        <input id="iddireccionempleado" type="text" required v-model="empleado.direccion" placeholder="AAAAAAAAA" class="form-control">
+                    </div>
+            </div>
+            <div class="row row-cols-2 p-2">
+                <div class="row-col">
+                    <div class="col">
+                        <label for="idtelefonoempleado">Telefono</label>
+                        <input id="idtelefonoempleado" type="text" required v-model="empleado.telefono" placeholder="0000-0000" class="form-control">
+                    </div>
+                </div>
+                <div class="row-col">
+                    <div class="col">
+                        <label for="idduiempleado">Dui</label>
+                        <input id="idduiempleado" type="text" required v-model="empleado.dui" placeholder="00000000-0" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-2 p-2">
+                    <div class="col-7">
+                        <label for="idtipoempleado">Tipo de empleado</label>
+                        <v-select v-model="empleado.tipoempleado" :options="tipoempleados" placeholder="Seleccione un tipo de empleado" id="idtipoempleado"/>
+                    </div>
+                    <div class="col-5">
+                        <label for="idfechaempleado">Fecha de nacimiento</label>
+                        <input id="idfechaempleado" type="date" v-model="empleado.fechanacimiento" class="form-control form-control-sm">
+                    </div>
+            </div>
+            <div class="row row-cols-1 p-2">
+                <div class="col text-center">
+                        <input id="btnGuardarEmpleados" type="submit" class="btn btn-success text-white" value="Guardar">
+                        <input type="reset" class="btn btn-danger text-white" value="Limpiar">
+                        <input type="button" class="btn btn-primary mostrar-buscar-empleados text-white" data-modulo="empleados" data-form="buscar-empleados" value="Buscar" >
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="public/vistas/empleados/empleados.js"></script>

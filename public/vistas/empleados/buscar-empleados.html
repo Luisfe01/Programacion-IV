@@ -1,0 +1,44 @@
+<form method="post" id="frm-buscar-empleados">
+    <div class="card">
+        <h3 class="card-header">
+            Busqueda de empleados <i class="fas fa-fw fa-search"></i>
+            <button type="button" id="btn-close-buscar-empleados" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </h3>
+        <div class="card-body">
+            <table id="tbl-buscar-empleados" class="table table-striped">
+                <thead>
+                    <tr>
+                            <input type="text" v-model="valor" v-on:keyup="buscarEmpleados" placeholder="Nombre, apellido o telefono" class="form-control">
+                    </tr>
+                    <tr>
+                        <th>PUESTO</th>
+                        <th>NOMBRE</th>
+                        <th>APELLIDO</th> 
+                        <th>DIRECCION</th> 
+                        <th>TELEFONO</th>           
+                        <th>DUI</th> 
+                        <th>FECHANACIMIENTO</th> 
+                        <th>ACCIONES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="mi_empleado in mis_empleados" :key="mi_empleado.idEmpleado" v-on:click="modificarEmpleado(mi_empleado)" >
+                        <td>{{ mi_empleado.tipoempleado.label }}</td>
+                        <td>{{ mi_empleado.nombre }}</td>
+                        <td>{{ mi_empleado.apellido }}</td>
+                        <td>{{ mi_empleado.direccion }}</td>
+                        <td>{{ mi_empleado.telefono }}</td>
+                        <td>{{ mi_empleado.dui }}</td>
+                        <td>{{ mi_empleado.fechanacimiento }}</td>
+                        <td>
+                            <input v-on:click="eliminarEmpleado(mi_empleado.idEmpleado)" type="button" class="btn btn-danger text-white" value="ELIMINAR">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+<script src="public/vistas/empleados/buscar-empleados.js"></script>

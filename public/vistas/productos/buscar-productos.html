@@ -1,0 +1,42 @@
+<form method="post" id="frm-buscar-productos">
+    <div class="card">
+        <h3 class="card-header">
+            Busqueda de productos <i class="fas fa-fw fa-search"></i>
+            <button type="button" id="btn-close-buscar-productos" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </h3>
+        <div class="card-body">
+            <table id="tbl-buscar-productos" class="table table-striped">
+                <thead>
+                    <tr>
+                            <input type="text" v-model="valor" v-on:keyup="buscarProductos" placeholder="Nombre, apellido o telefono" class="form-control">
+                    </tr>
+                    <tr>
+                        <th>CODIGO</th>
+                        <th>IMAGEN</th>
+                        <th>NOMRE</th> 
+                        <th>CATEGORIA</th> 
+                        <th>DESCRIPCCION</th>           
+                        <th>PRECIO</th> 
+                        <th>ACCIONES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="mi_producto in mis_productos" :key="mi_producto.idProducto" v-on:click="modificarProducto(mi_producto)" >
+                        <td>{{ mi_producto.codigo }}</td>
+                        <td><img v-bind:src="'/PROYECTO-FINAL/assets/images/'+mi_producto.imagen" width="70" height="70" /></td>
+                        <td>{{ mi_producto.nombre }}</td>
+                        <td>{{ mi_producto.tipoproducto.label }}</td>
+                        <td>{{ mi_producto.descripcion }}</td>
+                        <td>${{ mi_producto.precio }}</td>
+                        <td>
+                            <input v-on:click="eliminarProducto(mi_producto.idProducto)" type="button" class="btn btn-danger text-white" value="ELIMINAR">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+<script src="public/vistas/productos/buscar-productos.js"></script>

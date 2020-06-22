@@ -1,0 +1,26 @@
+<form method="post" id="frm-tipoempleados" v-on:submit.prevent="guardarTipoempleados" v-on:reset.prevent="limpiarTipoempleados">
+    <div class="card">
+        <h3 class="card-header">
+            Mantenimiento de categorias de empleados <i class="fas fa-fw fa-cog"> </i> 
+            <button type="button" id="btn-close-tipoempleados" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </h3>
+        <div class="card-body">
+            <div class="row row-cols-1 p-2">
+                    <div class="col">
+                        <label for="idtipo">Nueva categoria</label>
+                        <input id="idtipo" type="text" required v-model="tipoempleado.tipo" placeholder="AAAA" class="form-control">
+                    </div>
+            </div>
+            <div class="row row-cols-1 p-2">
+                <div class="col text-center">
+                        <input id="btnGuardarTipoempleados" type="submit" class="btn btn-success text-white" value="Guardar">
+                        <input type="reset" class="btn btn-danger text-white" value="Limpiar">
+                        <input type="button" class="btn btn-primary mostrar-buscar-tipoempleados text-white" data-modulo="tipoempleados" data-form="buscar-tipoempleados" value="Buscar" data-modulo="buscar-tipoempleados" >
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="public/vistas/tipoempleados/tipoempleados.js"></script>

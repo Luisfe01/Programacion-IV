@@ -1,0 +1,60 @@
+<form v-on:submit.prevent="guardarHabitaciones" v-on:reset="limpiarHabitaciones" id="frm-habitaciones">
+    <div class="card">
+        <h3 class="card-header">
+            Mantenimiento de habitaciones <i class="fas fa-fw fa-cog"></i>
+            <button type="button" id="btn-close-habitaciones" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </h3>
+        <div class="card-body">
+            <div class="row row-cols-2 p-2">
+                <div class="col">
+                    <label for="idtipohabitacion">Piso</label>
+                    <v-select v-model="habitacion.piso" :options="pisos" placeholder="Seleccione un tipo de habitacion" id="idtipohabitacion" />
+                </div>
+
+                <div class="col">
+                    <label for="idtipohabitacion">Tipo de habitacion</label>
+                    <v-select v-model="habitacion.tipohabitacion" :options="tipohabitaciones" placeholder="Seleccione un tipo de habitacion" id="idtipohabitacion" />
+                </div>
+                    
+
+            </div>
+            <div class="row row-cols-2 p-2">
+                <div class="row-col">
+                    <div class="col">
+                        <label for="idnumcamas">Numero de camas</label>
+                        <input id="idnumcamas" type="text" required v-model="habitacion.numcamas" placeholder="X" class="form-control">
+                    </div>
+                </div>
+                <div class="col">
+                    <label for="idnumerohabitacion">Numero de habitacion</label>
+                    <input id="idnumerohabitacion" type="text" required v-model="habitacion.numhabitacion" placeholder="XXX" class="form-control" >
+                </div>
+            </div>
+            <div class="row row-cols-2 p-2">
+                <div class="row-col">
+                    <div class="col">
+                        <label for="iddisponibilidad">Disponibilidad</label>
+
+                        <input id="iddisponibilidad" type="text" required v-model="habitacion.disponibilidad" placeholder="AAAAAAAAA" class="form-control">
+                    </div>
+                </div>
+                <div class="row-col">
+                    <div class="col">
+                        <label for="idprecio">Precio</label>
+                        <input id="idprecio" type="text" required v-model="habitacion.precio" placeholder="$" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-1 p-2">
+                <div class="col text-center">
+                        <input id="btnGuardarHabitaciones" type="submit" class="btn btn-success text-white" value="Guardar">
+                        <input type="reset" class="btn btn-danger text-white" value="Limpiar">
+                        <input type="button" class="btn btn-primary mostrar-buscar-habitaciones text-white" data-modulo="habitaciones" data-form="buscar-habitaciones" value="Buscar" >
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="public/vistas/habitaciones/habitaciones.js"></script>

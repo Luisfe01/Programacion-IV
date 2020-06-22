@@ -1,0 +1,76 @@
+<form v-on:submit.prevent="guardarProductos" v-on:reset="limpiarProductos" id="frm-productos">
+    
+    <div class="card" style="width: 30rem;">
+        <h3 class="card-header">
+            Mantenimiento de Productos <i class="fas fa-fw fa-cog"></i>
+            <button type="button" id="btn-close-productos" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </h3>
+        <div class="card-body">
+            <div class="row row-cols-2 p-2">
+                <div class="row-col">
+                    <div class="col">
+                        <label for="idcodigoproducto">Codigo</label>
+                        <input id="idcodigoproducto" type="text" required v-model="producto.codigo" placeholder="AAA AAAA" class="form-control">
+                    </div>
+                </div>
+                <div class="row-col">
+                    <div class="col">
+                        <label for="idnombreproducto">Nombre</label>
+                        <input id="idnombreproducto" type="text" required v-model="producto.nombre" placeholder="AAAAAAAAA" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row row-cols-1 p-2">
+ 
+                <div class="col-4">
+                    <label for="text1">Imagen</label>
+                    <input id="text1" type="file" class="form-control form-control-sm">
+                </div>
+                <div class="col-8">
+                    <label  for="eventTarg" >Nombre de la imagen</label>
+                    <input id="eventTarg" type="text" disabled required v-model="producto.imagen" class="form-control form-control">
+                </div>
+      
+            </div>
+            <div class="row row-cols-2 p-2">
+                <div class="row-col">
+                    <div class="col">
+                        <label for="iddescripcionproducto">Descripcion</label>
+                        <input id="iddescripcionproducto" type="text" required v-model="producto.descripcion" placeholder="0000-0000" class="form-control">
+                    </div>
+                </div>
+                <div class="row-col">
+                    <div class="col">
+                        <label for="idprecioproducto">Precio</label>
+                        <input id="idprecioproducto" type="text" required v-model="producto.precio" placeholder="00000000-0" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-2 p-2">
+                    <div class="col-7">
+                        <label for="idtipoproducto">Categoria de producto</label>
+                        <v-select v-model="producto.tipoproducto" :options="tipoproductos" placeholder="Seleccione un tipo de producto" id="idtipoproducto"/>
+                    </div>
+            </div>
+
+
+            <div class="row row-cols-1 p-2">
+                <div class="col text-center">
+                        <input id="btnGuardarProductos" type="submit" class="btn btn-success text-white" value="Guardar">
+                        <input type="reset" class="btn btn-danger text-white" value="Limpiar">
+                        <input type="button" class="btn btn-primary mostrar-buscar-productos text-white" data-modulo="productos" data-form="buscar-productos" value="Buscar" >
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+</form>
+<script src="public/vistas/productos/productos.js"></script>
+
+<script src="public/vistas/productos/script.js"></script>
+<script src="public/vistas/productos/bililiteRange.js"></script>
+<script src="public/vistas/productos/jquery.sendkeys.js"></script>

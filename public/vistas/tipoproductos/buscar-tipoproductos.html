@@ -1,0 +1,34 @@
+<form method="post" id="frm-buscar-tipoproductos">
+        <div class="card">
+
+        <h3 class="card-header">
+            Busqueda de categorias <i class="fas fa-fw fa-search"></i>
+
+            <button type="button" id="btn-close-buscar-tipoproductos" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </h3>
+        <div class="card-body">
+            <table id="tbl-buscar-tipoproductos" class="table table-striped">
+                <thead>
+                    <tr>
+                            <input type="text" v-model="valor" v-on:keyup="buscarTipoproductos" placeholder="Buscar por categoria" class="form-control">
+                    </tr>
+                    <tr>
+                        <th>CATEGORIA</th>
+                        <th>ACCIONES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="mi_tipoproducto in mis_tipoproductos" :key="mi_tipoproducto.idTipoproducto" v-on:click="modificarTipoproducto(mi_tipoproducto)" >
+                        <td>{{ mi_tipoproducto.categoria }}</td>
+                        <td>
+                            <input v-on:click="eliminarTipoproducto(mi_tipoproducto.idTipoproducto)" type="button" class="btn btn-danger text-white" value="ELIMINAR">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</form>
+<script src="public/vistas/tipoproductos/buscar-tipoproductos.js"></script>

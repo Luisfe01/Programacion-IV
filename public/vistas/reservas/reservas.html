@@ -1,0 +1,44 @@
+<form v-on:submit.prevent="guardarReservas" v-on:reset="limpiarReservas" id="frm-reservas">
+    <div class="card">
+        <h3 class="card-header">
+            Mantenimiento de reservas <i class="fas fa-fw fa-cog"></i>
+            <button type="button" id="btn-close-reservas" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </h3>
+        <div class="card-body">
+            <div class="row row-cols-2 p-2">
+                <div class="col">
+                    <label for="idtipohabitacion">Cliente</label>
+                    <v-select v-model="reserva.cliente" :options="clientes" placeholder="Seleccione un cliente" id="idtipohabitacion" />
+                </div>
+
+                <div class="col">
+                    <label for="idtipohabitacion">Habitacion</label>
+                    <v-select v-model="reserva.habitacion" :options="habitaciones" placeholder="Seleccione una habitacion" id="idtipohabitacion" />
+                </div>
+                
+            </div>
+            <div class="row row-cols-2 p-2">
+                <div class="row-col">
+                    <div class="col">
+                        <label for="idfechaentrada">Fecha de entrada</label>
+                        <input id="idfechaentrada" type="date" required v-model="reserva.fechainicio"  class="form-control">
+                    </div>
+                </div>
+                <div class="col">
+                    <label for="idfechasalida">Fecha de salida</label>
+                    <input id="idfechasalida" type="date" required v-model="reserva.fechafinal" class="form-control" >
+                </div>
+            </div>
+            <div class="row row-cols-1 p-2">
+                <div class="col text-center">
+                        <input id="btnGuardarReservas" type="submit" class="btn btn-success text-white" value="Guardar">
+                        <input type="reset" class="btn btn-danger text-white" value="Limpiar">
+                        <input type="button" class="btn btn-primary mostrar-buscar-reservas text-white" data-modulo="reservas" data-form="buscar-reservas" value="Buscar" >
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="public/vistas/reservas/reservas.js"></script>

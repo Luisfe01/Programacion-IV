@@ -1,0 +1,26 @@
+<form method="post" id="frm-tipoproductos" v-on:submit.prevent="guardarTipoproductos" v-on:reset.prevent="limpiarTipoproductos">
+    <div class="card">
+        <h3 class="card-header">
+            Mantenimiento de categorias de productos <i class="fas fa-fw fa-cog"> </i> 
+            <button type="button" id="btn-close-tipoproductos" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </h3>
+        <div class="card-body">
+            <div class="row row-cols-1 p-2">
+                    <div class="col">
+                        <label for="idcategoria">Nueva categoria</label>
+                        <input id="idcategoria" type="text" required v-model="tipoproducto.categoria" placeholder="AAAA" class="form-control">
+                    </div>
+            </div>
+            <div class="row row-cols-1 p-2">
+                <div class="col text-center">
+                        <input id="btnGuardarTipoproductos" type="submit" class="btn btn-success text-white" value="Guardar">
+                        <input type="reset" class="btn btn-danger text-white" value="Limpiar">
+                        <input type="button" class="btn btn-primary mostrar-buscar-tipoproductos text-white" data-modulo="tipoproductos" data-form="buscar-tipoproductos" value="Buscar" data-modulo="buscar-tipoproductos" >
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="public/vistas/tipoproductos/tipoproductos.js"></script>

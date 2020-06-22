@@ -1,0 +1,34 @@
+<form method="post" id="frm-pisos" v-on:submit.prevent="guardarPisos" v-on:reset.prevent="limpiarPisos">
+    <div class="card">
+        <h3 class="card-header">
+            Mantenimiento de pisos <i class="fas fa-fw fa-cog"></i>
+            <button type="button" id="btn-close-pisos" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </h3>
+        <div class="card-body">
+            <div class="row row-cols-2 p-2">
+                <div class="row-col">
+                    <div class="col">
+                        <label for="idnumeropiso">Numero de piso</label>
+                        <input id="idnumeropiso" type="text" required v-model="piso.numpiso" placeholder="N°" class="form-control">
+                    </div>
+                </div>
+                <div class="row-col">
+                    <div class="col">
+                        <label for="idpiso">Piso</label>
+                        <input id="idpiso" type="text" required v-model="piso.nombre" placeholder="AAAAA" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-1 p-2">
+                <div class="col text-center">
+                        <input id="btnGuardarPisos" type="submit" class="btn btn-success text-white" value="Guardar">
+                        <input type="reset" class="btn btn-danger text-white" value="Limpiar">
+                        <input type="button" class="btn btn-primary mostrar-buscar-pisos text-white" data-modulo="pisos" data-form="buscar-pisos" value="Buscar" data-modulo="buscar-pisos" >
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="public/vistas/pisos/pisos.js"></script>

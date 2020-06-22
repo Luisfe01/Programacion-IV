@@ -1,0 +1,46 @@
+<form method="post" id="frm-buscar-habitaciones">
+    <div class="card">
+        <h3 class="card-header">
+            Busqueda de Habitaciones <i class="fas fa-fw fa-search"></i>
+            <button type="button" id="btn-close-buscar-habitaciones" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </h3>
+        <div class="card-body">
+            <input type="text" v-model="valor" v-on:keyup="buscarHabitaciones" placeholder="Nombre, apellido o dui" class="form-control">
+            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+
+            <table id="tbl-buscar-habitaciones" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>PISO</th>
+                        <th>CATEGORIA</th>
+                        <th>NUMERO DE HABITACION</th>
+                        <th>CAMAS</th> 
+                        <th>DISPONIBILIDAD</th> 
+                        <th>PRECIO</th> 
+                        <th>ACCIONES</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr v-for="mi_habitacion in mis_habitaciones" :key="mi_habitacion.idHabitacion" v-on:click="modificarHabitacion(mi_habitacion)" >
+                        <td>{{ mi_habitacion.piso.label }}</td>
+                        <td>{{ mi_habitacion.tipohabitacion.label}}</td>
+                        <td>{{ mi_habitacion.numhabitacion }}</td>
+                        <td>{{ mi_habitacion.numcamas }}</td>
+                        <td>{{ mi_habitacion.disponibilidad}}</td>
+                        <td>{{ mi_habitacion.precio}}</td>
+
+
+                        <td>
+                            <input v-on:click="eliminarHabitacion(mi_habitacion.idHabitacion)" type="button" class="btn btn-danger text-white" value="ELIMINAR">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+</form>
+<script src="public/vistas/habitaciones/buscar-habitaciones.js"></script>
